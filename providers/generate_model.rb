@@ -1,7 +1,7 @@
 action :backup do
   cron "scheduled backup: " + new_resource.name do
     hour new_resource.hour || "1" 
-    minute new_resource.minute || "*"
+    minute new_resource.minute || "0"
     day new_resource.day || "*"
     month new_resource.month || "*"
     weekday new_resource.weekday || "*"
