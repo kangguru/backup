@@ -1,11 +1,11 @@
 action :backup do
   cron "scheduled backup: " + new_resource.name do
-    hour new_resource.hour || "1" 
+    hour new_resource.hour || "1"
     minute new_resource.minute || "0"
     day new_resource.day || "*"
     month new_resource.month || "*"
     weekday new_resource.weekday || "*"
-    path new_resource.path || "/usr/bin:/bin"
+    path new_resource.path || "/usr/bin:/usr/local/bin:/bin"
     mailto new_resource.mailto
     command "backup perform -t #{new_resource.name} -c #{new_resource.base_dir}/config.rb"
     action :nothing
@@ -15,7 +15,7 @@ action :backup do
     source new_resource.options["source"] || "generic_model.conf.erb"
     cookbook new_resource.options["cookbook"] || "backup"
     variables({
-                :name => new_resource.name, 
+                :name => new_resource.name,
                 :options => new_resource.options,
                 :base_dir => new_resource.base_dir,
                 :split_into_chunks_of => new_resource.split_into_chunks_of,
