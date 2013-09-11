@@ -12,7 +12,7 @@ attribute :minute, :kind_of => String, :default => "0"
 attribute :day, :kind_of => String, :default => "*"
 attribute :month, :kind_of => String, :default => "*"
 attribute :weekday, :kind_of => String, :default => "*"
-attribute :path, :kind_of => String, :default => "/usr/bin:/bin"
+attribute :path, :kind_of => String, :default => "/usr/bin:/usr/local/bin:/bin"
 attribute :mailto, :kind_of => String, :default => nil
 
 def initialize(*args)
