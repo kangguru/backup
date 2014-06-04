@@ -3,7 +3,7 @@
 ##
 # Backup Generated: <%= @name %>
 # Once configured, you can run the backup with the following command:
-# 
+#
 # $ backup perform -t <%= @name %> [-c <path_to_configuration_file>]
 #
 Backup::Model.new(:<%= @name %>, '<%= @description %>') do
@@ -23,6 +23,18 @@ split_into_chunks_of <%= @split_into_chunks_of %>
     <% end %>
   end
 <% end %>
+
+<% if @notify_by %>
+  ##
+  # Notification
+  #
+  notify_by <%= @notify_by["engine"] %> do |<%= @notify_by["engine"].downcase %>|
+  <% @notify_by["settings"].each_pair do |k,v| %>
+    <%= k %> = <% if (v.kind_of?(TrueClass) || v.kind_of?(FalseClass)) %> <%= v %> <% else %> "<%= v %>" <% end %>
+    <% end %>
+  end
+<% end %>
+
   ##
   # Gzip [Compressor]
   #
