@@ -5,13 +5,10 @@ action :setup do
       recursive true
     end
   end
-  
+
   template "#{new_resource.base_dir}/config.rb" do
     cookbook "backup"
     source "config.rb.erb"
-    variables({
-                :encryption_password => new_resource.encryption_password
-              })
   end
   new_resource.updated_by_last_action(true)
 end
