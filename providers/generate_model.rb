@@ -7,7 +7,7 @@ action :backup do
     weekday new_resource.weekday || "*"
     path new_resource.path
     mailto new_resource.mailto
-    command "backup perform -t #{new_resource.name} -c #{new_resource.base_dir}/config.rb"
+    command "backup perform -t #{new_resource.name} -c #{new_resource.base_dir}/config.rb #{(new_resource.syslog ? '--syslog' : '')} "
     action :nothing
   end
   template "#{new_resource.base_dir}/models/#{new_resource.name}.rb" do
