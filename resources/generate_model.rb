@@ -15,7 +15,7 @@ attribute :month, :kind_of => String, :default => "*"
 attribute :weekday, :kind_of => String, :default => "*"
 attribute :path, :kind_of => String, :default => "/usr/bin:/usr/local/bin:/bin"
 attribute :mailto, :kind_of => String, :default => nil
-attribute :syslog, :kind_of => Boolean, :default => false
+attribute :syslog, :kind_of => [NilClass, TrueClass, FalseClass], :default => false
 
 def initialize(*args)
   super
